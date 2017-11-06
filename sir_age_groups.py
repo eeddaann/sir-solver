@@ -5,6 +5,8 @@ import numpy as np
 from pylab import *
 import scipy.integrate as spi
 
+
+
 #Parameter Values
 Sa0 = 0.499995
 Sb0 = 0.499995
@@ -49,27 +51,40 @@ Sb=(SIR[:,3])
 Ib=(SIR[:,4])
 Rb=(SIR[:,5])
 
-if Sa.all()>=0 and Sa.all()<=1:
-    print("s ok")
-if Ia.all()>=0 and Ia.all()<=1:
-    print("i ok")
-if Ra.all()>=0 and Ra.all()<=1:
-    print("r ok")
+def validate():
+    if Sa.all()>=0 and Sa.all()<=1:
+        print("s ok")
+    if Ia.all()>=0 and Ia.all()<=1:
+        print("i ok")
+    if Ra.all()>=0 and Ra.all()<=1:
+        print("r ok")
 
-if Sb.all()>=0 and Sb.all()<=1:
-    print("s ok")
-if Ib.all()>=0 and Ib.all()<=1:
-    print("i ok")
-if Rb.all()>=0 and Rb.all()<=1:
-    print("r ok")
+    if Sb.all()>=0 and Sb.all()<=1:
+        print("s ok")
+    if Ib.all()>=0 and Ib.all()<=1:
+        print("i ok")
+    if Rb.all()>=0 and Rb.all()<=1:
+        print("r ok")
 
-print(Sa+Sb+Ia+Ib+Ra+Rb)
+    print(Sa+Sb+Ia+Ib+Ra+Rb)
 
-plot(range(len(Sa)),Sa)
-plot(range(len(Sb)),Sb)
-plot(range(len(Ia)),Ia)
-plot(range(len(Ib)),Ib)
-plot(range(len(Ra)),Ra)
-plot(range(len(Rb)),Rb)
-plt.show()
+def visualize():
+    plot(range(len(Sa)),Sa)
+    plot(range(len(Sb)),Sb)
+    plot(range(len(Ia)),Ia)
+    plot(range(len(Ib)),Ib)
+    plot(range(len(Ra)),Ra)
+    plot(range(len(Rb)),Rb)
+    plt.show()
 
+
+def warpper():
+    SIR = spi.odeint(eq_system, PopIn, t_interval)
+    return SIR[:,1][-1],SIR[:,4][-1]
+
+def model_4_test():
+    SIR = spi.odeint(eq_system, PopIn, t_interval)
+    return SIR
+
+
+print(warpper())
