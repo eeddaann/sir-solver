@@ -1,5 +1,5 @@
 AGE_GROUP_NAMES = ['young','mid','old','veryold']
-STATES = ['s','i','r','id','v']
+STATES = ['s','i','r','v']
 
 
 class IGroup:
@@ -17,7 +17,7 @@ class IGroup:
         groups = []
         for age_group in age_groups:
             for state in STATES:
-                groups.append(AgeGroup(age_group,state))
+                groups.append(State(age_group,state))
         return groups
 
 
@@ -33,7 +33,7 @@ class AgeGroup():
 
 class State():
     def __init__(self, age_group, state_name):
-        self.group = str(age_group.igroup)
+        self.group = str(age_group.group)
         self.age_group = str(age_group)
         self.state = state_name
 
@@ -49,10 +49,12 @@ class State():
 #         return self.name+"_"+self.age_group_name
 
 
-igroups = [IGroup('g1',AGE_GROUP_NAMES),IGroup('g2',AGE_GROUP_NAMES[:2])]
+igroups = [IGroup('g1',AGE_GROUP_NAMES),IGroup('g2',AGE_GROUP_NAMES)]
 
+groups = []
 
 for group in igroups:
     for g in group.sub_groups:
-        print(str(g))
+        groups.append(g)
+        #print(str(g))
 
