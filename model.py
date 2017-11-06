@@ -5,16 +5,16 @@ from scipy.optimize import minimize
 def sir_model(policy_vector):
     return policy_vector
 
-def get_utility(policy_vector,decision_maker, model = sir_model):
+def get_utility(policy_vector,decision_maker, model = sir_model,sign=-1.0): #sign for maximization
     utilities = []
     model_results = model(policy_vector)
     for i in range(len(decision_maker.preferences)):
-        utilities.append(polynomial(model_results[i],decision_maker.preferences[i]))
-    return 1- sigmoid(sum(utilities)) #1- for minimization
+        utilities.append(sigmoid(model_results[i],k=decision_maker.preferences[i]))
+    return sum(utilities) 
 
 
 def sigmoid(x,k=1,l=1,x0=0):
-    return l/(1+np.e**-k*(x-x0))
+    return l/(1+np.e**k*(x-x0))
 
 def polynomial(x,preference):
     return 1-x**preference
