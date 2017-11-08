@@ -7,12 +7,12 @@ def load_model():
 
 def test_sum_to_one(load_model):
     for i in load_model:
-        assert(sum(i)>0.99 and sum(i)<=1)
+        assert(sum(i)>0.999999 and sum(i)<=1.0000001)
 
 def test_non_negative(load_model):
     for i in load_model:
         for j in i:
-            assert(j>=0)
+            assert(j>=-0.000001)
 
 
 
