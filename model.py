@@ -49,7 +49,7 @@ def elections(decision_makers):
             normalized_utility = get_utility(current_solution,another_decision_maker.preferences)/another_decision_maker.value*-1
             d[decision_maker.name] += normalized_utility
     winner = max(d, key=d.get)
-    
+
     return sorted(d.items(), key=operator.itemgetter(1))
 
 
