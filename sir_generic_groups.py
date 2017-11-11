@@ -4,29 +4,29 @@
 import numpy as np
 from pylab import *
 import scipy.integrate as spi
-from constants import groups
+from load_configuration import Model
 
-
-PopIn = [g.initial_number for g in groups]
+model = Model()
+PopIn = [g.initial_number for g in model.groups]
 PopIn = PopIn/sum(PopIn)
 
 contacts = 0.5 #TODO: contacs
-beta = [g.beta for g in groups]
-gamma = [g.gamma for g in groups]
-states = [g.state for g in groups]
+beta = [g.beta for g in model.groups]
+gamma = [g.gamma for g in model.groups]
+states = [g.state for g in model.groups]
 vac_eff= 0.5
 t_end = 100
 t_start = 1
 t_step = .02
 t_interval = np.arange(t_start, t_end, t_step)
-p = [0]*len(groups)
-
+p = [0]*len(model.groups)
+groups_num = len(model.groups)
 def eq_system(PopIn,t,p):
     '''Defining SIR System of Equations'''
     #Creating an array of equations
-    Eqs= np.zeros((len(groups)))
+    Eqs= np.zeros(groups_num)
 
-    for i in range(len(groups)):
+    for i in range(groups_num):
         # s
         if states[i] is 's':
             Eqs[i] = - beta[i] * PopIn[i] * contacts * (1-p[i]) - p[i] * PopIn[i]
