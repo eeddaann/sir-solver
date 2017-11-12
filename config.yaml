@@ -20,6 +20,9 @@
         size: 1000
         beta: 0.2
         gamma: 0.4
+        contacts:
+          p_infants: 10
+          p_children: 15
       - name: children
         size: 1000
       - name: adults

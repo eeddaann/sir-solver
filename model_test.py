@@ -1,10 +1,8 @@
 import pytest
-import sir_age_groups
 import sir_generic_groups
 
 @pytest.fixture
 def load_model():
-    #return sir_age_groups.model_4_test()
     return sir_generic_groups.model_4_test()
 
 def test_sum_to_one(load_model):

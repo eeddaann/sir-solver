@@ -10,7 +10,8 @@ model = Model()
 PopIn = [g.initial_number for g in model.groups]
 PopIn = PopIn/sum(PopIn)
 
-contacts = 0.5 #TODO: contacs
+
+contacts = [g.contacts_vector for g in model.groups] #TODO: normalize
 beta = [g.beta for g in model.groups]
 gamma = [g.gamma for g in model.groups]
 states = [g.state for g in model.groups]
@@ -29,9 +30,9 @@ def eq_system(PopIn,t,p):
     for i in range(groups_num):
         # s
         if states[i] is 's':
-            Eqs[i] = - beta[i] * PopIn[i] * contacts * (1-p[i]) - p[i] * PopIn[i]
+            Eqs[i] = - beta[i] * PopIn[i] * sum([PopIn[j]*contacts[i][j] for j in range(groups_num)]) * (1-p[i]) - p[i] * PopIn[i]
         if states[i] is 'i':
-            Eqs[i] = beta[i-1] * PopIn[i-1] * contacts * (1-p[i-1]) - p[i-1] * PopIn[i-1] - gamma[i] * PopIn[i]
+            Eqs[i] = beta[i-1] * PopIn[i-1] * sum([PopIn[j]*contacts[i-1][j] for j in range(groups_num)]) * (1-p[i-1]) - p[i-1] * PopIn[i-1] - gamma[i] * PopIn[i]
         if states[i] is 'r':
             Eqs[i] = gamma[i] * PopIn[i-1] + gamma[i] * PopIn[i+1]
         if states[i] is 'id':
