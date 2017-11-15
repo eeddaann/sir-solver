@@ -5,8 +5,9 @@ import numpy as np
 from pylab import *
 import scipy.integrate as spi
 from load_configuration import Model
+import csv
 
-model = Model()
+model = Model("popmodel.yaml")
 PopIn = [g.initial_number for g in model.groups]
 PopIn = PopIn/sum(PopIn)
 
@@ -46,4 +47,15 @@ def eq_system(PopIn,t,p):
 def model_4_test():
     SIR = spi.odeint(eq_system, PopIn, t_interval,args=(p,))
     return SIR
+
+def run_model(p):
+    return spi.odeint(eq_system, PopIn, t_interval,args=(p,))
+
+def export_to_csv(p):
+    res = run_model(p)
+    with open("results.csv", "w") as output:
+        writer = csv.writer(output, lineterminator='\n')
+        writer.writerow([str(g) for g in model.groups])
+        writer.writerows(res)
+
 
