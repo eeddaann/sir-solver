@@ -1,2 +1,3 @@
-# sir-solver
-multi-objective optimizer for complex vaccination problems
+# etc branch
+
+in this branch all auxiliary scripts will be placed.
