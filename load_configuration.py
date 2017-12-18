@@ -1,6 +1,7 @@
 
 import yaml
-STATES = ['s','i','r','id','v']
+#STATES = ['s','i','r','id','v']
+STATES = ['s','e','i','r','v']
 # TODO: rewrite and redesign.. i don't like the structure..
 class IGroup:
     def __init__(self, name,subgroups,beta,gamma,initial_ratio):
@@ -76,7 +77,7 @@ class State():
 
 
 class Model:
-    def __init__(self, config_path='config.yaml'):
+    def __init__(self, config_path):
         self.dataMap = self.load_DataMap(config_path)
         self.global_params = self.load_global_params()
         self.groups = self.load_groups()

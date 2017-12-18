@@ -1,9 +1,9 @@
 import pytest
-import sir_generic_groups
+import seirv_generic_groups
 
 @pytest.fixture
 def load_model():
-    return sir_generic_groups.model_4_test()
+    return seirv_generic_groups.model_4_test()
 
 def test_sum_to_one(load_model):
     for i in load_model:

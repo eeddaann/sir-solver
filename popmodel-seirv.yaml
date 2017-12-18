@@ -1,0 +1,133 @@
+- global:
+  - vaccine efficacy: 0.2
+  - defaults:
+    beta: 0.5
+    gamma: 0.3
+    initial ratio:
+      s: 0.9
+      i: 0.05
+      r: 0.0
+      e: 0.0
+      v: 0.05
+
+
+- groups:
+  - name: p
+    subgroups:
+      - name: infants
+        size: 724031
+        contacts:
+          p_infants: 2
+          p_children: 3
+          p_adults: 5
+          p_matures: 2
+      - name: children
+        size: 1715637
+        contacts:
+          p_infants: 1
+          p_children: 6
+          p_adults: 3
+          p_matures: 2
+      - name: adults
+        size: 1941868
+        contacts:
+          p_infants: 1
+          p_children: 2
+          p_adults: 10
+          ia_adults: 5
+          p_matures: 5
+      - name: matures
+        size: 502800
+        contacts:
+          p_infants: 1
+          p_children: 2
+          p_adults: 5
+          p_matures: 10
+
+  - name: pw
+    subgroups:
+      - name: children
+        size: 1800
+        contacts:
+          p_infants: 1
+          p_children: 6
+          p_adults: 3
+          p_matures: 2
+      - name: adults
+        size: 52800
+        contacts:
+          p_infants: 1
+          p_children: 2
+          p_adults: 10
+          ia_adults: 5
+          p_matures: 5
+      - name: matures
+        size: 5400
+        contacts:
+          p_infants: 1
+          p_children: 2
+          p_adults: 5
+          p_matures: 10
+
+
+  - name: ij
+    subgroups:
+      - name: infants
+        size: 676500
+        contacts:
+          ij_infants: 2
+          ij_children: 3
+          ij_adults: 5
+          ij_matures: 2
+      - name: children
+        size: 1614500
+        contacts:
+          ij_infants: 2
+          ij_children: 10
+          ij_adults: 5
+          ij_matures: 2
+      - name: adults
+        size: 2616800
+        contacts:
+          ij_infants: 2
+          ij_children: 2
+          ij_adults: 15
+          ij_matures: 2
+      - name: matures
+        size: 1860700
+        contacts:
+          ij_infants: 2
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+
+  - name: ia
+    subgroups:
+      - name: infants
+        size: 201700
+        contacts:
+          ia_infants: 2
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+      - name: children
+        size: 592200
+        contacts:
+          ia_infants: 2
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+      - name: adults
+        size: 725600
+        contacts:
+          ia_infants: 2
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+      - name: matures
+        size: 258300
+        contacts:
+          ia_infants: 2
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
