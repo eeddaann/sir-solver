@@ -73,7 +73,6 @@ class State():
             self.contacts_vector = contacts_vector
         else:
             self.contacts_vector = None # again, easy iteration, not smart..
-        #print(self.contacts_vector) # I hope it won't work so i will have to rewrite this..
 
 
 class Model:
@@ -97,7 +96,6 @@ class Model:
 
         groups = []
         for group in self.dataMap[1]['groups']:
-            #print(group)
             beta,gamma,initial_ratio = default_beta,default_gamma,default_initial_ratio
             if 'beta' in group:
                 beta = group['beta']
