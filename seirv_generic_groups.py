@@ -35,16 +35,17 @@ def eq_system(PopIn,t,p):
     for i in range(groups_num):
         # s
         if states[i] is 's':
-            #Eqs[i] = - beta[i] * PopIn[i] * sum([PopIn[j]*contacts[i][j] for j in range(groups_num)]) * (1-p[i]) - p[i] * PopIn[i]
-            Eqs[i] = (1-p[i]) * - beta[i] * PopIn[i] * sum([PopIn[j]*contacts[i][j] for j in range(groups_num)]) * np.cos(t/26.0) - p[i] * PopIn[i]
+            lamda = sum([PopIn[j]*contacts[i][j] for j in range(groups_num)]) * max(np.cos(t*6.28/52.0),10**-7)
+            Eqs[i] = - beta[i]  * lamda * PopIn[i]
         if states[i] is 'e':
-            Eqs[i] = ((1-p[i])* PopIn[i-1] + PopIn[i+3]*(1-vac_eff)) * beta[i] * sum([PopIn[j]*contacts[i-1][j] for j in range(groups_num)]) * np.cos(t/26.0) - sigma * PopIn[i]
+            lamda = sum([PopIn[j]*contacts[i-1][j] for j in range(groups_num)]) * max(np.cos(t*6.28/52.0),10**-7)
+            Eqs[i] = beta[i] * lamda * PopIn[i-1] - sigma * PopIn[i] + beta[i] * (1-vac_eff) * PopIn[i+3]
         if states[i] is 'i':
             Eqs[i] = sigma * PopIn[i-1] - gamma[i] * PopIn[i]
         if states[i] is 'r':
             Eqs[i] = gamma[i] * PopIn[i-1]
         if states[i] is 'v':
-            Eqs[i] = PopIn[i-4] * p[i] - (1-vac_eff) * beta[i] * PopIn[i] * sum([PopIn[j]*contacts[i-4][j] for j in range(groups_num)]) * np.cos(t/26.0)
+            Eqs[i] = -(1-vac_eff) * beta[i] * PopIn[i]
 
 
 
