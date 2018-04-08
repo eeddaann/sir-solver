@@ -1,5 +1,6 @@
 
 import yaml
+import numpy as np
 #STATES = ['s','i','r','id','v']
 STATES = ['s','e','i','r','v']
 # TODO: rewrite and redesign.. i don't like the structure..
@@ -82,6 +83,14 @@ class Model:
         self.groups = self.load_groups()
         for g in self.groups:
             g.generate_contacts_vector(self.groups)
+
+        PopIn = np.array([g.initial_number for g in self.groups])
+        self.PopIn = PopIn / sum(PopIn)
+        self.contacts = [g.contacts_vector for g in self.groups]  # TODO: normalize
+        self.beta = [g.beta for g in self.groups]
+        self.gamma = [g.gamma for g in self.groups]
+        self.states = [g.state for g in self.groups]
+        self.groups_num = len(self.groups)
     def load_DataMap(self,config_path):
         f = open(config_path)
         dataMap = yaml.load(f)

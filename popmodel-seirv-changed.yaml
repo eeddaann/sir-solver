@@ -1,0 +1,257 @@
+- global:
+  - vaccine efficacy: 0.5
+  - defaults:
+    beta: 0.1
+    gamma: 0.3
+    initial ratio:
+      s: 0.9
+      i: 0.05
+      r: 0.0
+      e: 0.0
+      v: 0.05
+
+
+- groups:
+  - name: p
+    subgroups:
+      - name: infants
+        size: 724031
+        contacts: # assume contacts with ia are negligible
+          p_infants: 2 # J contact matrix
+          p_children: 3
+          p_adults: 5
+          p_matures: 2
+      - name: children
+        size: 1715637
+        contacts:
+          p_infants: 1 # J contact matrix
+          p_children: 6
+          p_adults: 3
+          p_matures: 2
+      - name: adults
+        size: 1941868
+        contacts:
+          p_infants: 1  # J contact matrix
+          p_children: 2
+          p_adults: 10
+          ia_adults: 5
+          p_matures: 5
+      - name: matures
+        size: 502800
+        contacts:
+          p_infants: 1  # J contact matrix
+          p_children: 2
+          p_adults: 5
+          p_matures: 10
+
+  - name: pw
+    subgroups:
+      - name: children
+        size: 1800
+        contacts:  # assume contacts with ib include contacts with ia, assume contacts with p include contacts with pw
+          p_infants: 1 # survey
+          p_children: 6
+          p_adults: 3
+          p_matures: 2
+          ib_infants: 1 # survey
+          ib_children: 6
+          ib_adults: 3
+          ib_matures: 2
+      - name: adults
+        size: 52800
+        contacts:
+          p_infants: 1 # survey
+          p_children: 2
+          p_adults: 10
+          ia_adults: 5
+          p_matures: 5
+          ib_infants: 1 # survey
+          ib_children: 6
+          ib_adults: 3
+          ib_matures: 2
+      - name: matures
+        size: 5400
+        contacts:
+          p_infants: 1 # survey
+          p_children: 2
+          p_adults: 5
+          p_matures: 10
+          ib_infants: 1 # survey
+          ib_children: 6
+          ib_adults: 3
+          ib_matures: 2
+
+
+  - name: ij
+    subgroups:
+      - name: infants
+        size: 676500
+        contacts:  # assume contacts with ib are negligible
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 3
+          ij_adults: 5
+          ij_matures: 2
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 3
+          ia_adults: 5
+          ia_matures: 2
+      - name: children
+        size: 1614500
+        contacts:
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 10
+          ij_adults: 5
+          ij_matures: 2
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 3
+          ia_adults: 5
+          ia_matures: 2
+      - name: adults
+        size: 2616800
+        contacts:
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 2
+          ij_adults: 15
+          ij_matures: 2
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 3
+          ia_adults: 5
+          ia_matures: 2
+      - name: matures
+        size: 1860700
+        contacts:
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 3
+          ia_adults: 5
+          ia_matures: 2
+
+  - name: ia
+    subgroups:
+      - name: infants
+        size: 201700
+        contacts:  # assume contacts with ib and pw are negligible
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          p_infants: 2 # traffic
+          p_children: 3
+          p_adults: 5
+          p_matures: 2
+      - name: children
+        size: 592200
+        contacts:
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          p_infants: 2 # traffic
+          p_children: 3
+          p_adults: 5
+          p_matures: 2
+      - name: adults
+        size: 725600
+        contacts:
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          p_infants: 2 # traffic
+          p_children: 3
+          p_adults: 5
+          p_matures: 2
+      - name: matures
+        size: 258300
+        contacts:
+          ia_infants: 2 # Dor + i matrix
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # Dor + i matrix
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          p_infants: 2 # traffic
+          p_children: 3
+          p_adults: 5
+          p_matures: 2
+  - name: ib
+    subgroups:
+      - name: infants
+        size: 20170
+        contacts:
+          ia_infants: 2 # assumptions
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # assumptions
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          pw_infants: 2 # assumptions
+          pw_children: 3
+          pw_adults: 5
+          pw_matures: 2
+      - name: children
+        size: 59220
+        contacts:
+          ia_infants: 2 # assumptions
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # assumptions
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          pw_infants: 2 # assumptions
+          pw_children: 3
+          pw_adults: 5
+          pw_matures: 2
+      - name: adults
+        size: 725600
+        contacts:
+          ia_infants: 2 # assumptions
+          ia_children: 2
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # assumptions
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          pw_infants: 2 # assumptions
+          pw_children: 3
+          pw_adults: 5
+          pw_matures: 2
+      - name: matures
+        size: 25830
+        contacts:
+          ia_infants: 2 # assumptions
+          ia_children: 2
+
+          ia_adults: 5
+          ia_matures: 7
+          ij_infants: 2 # assumptions
+          ij_children: 2
+          ij_adults: 5
+          ij_matures: 7
+          pw_infants: 2 # assumptions
+          pw_children: 3
+          pw_adults: 5
+          pw_matures: 2
+
