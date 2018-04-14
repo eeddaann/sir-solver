@@ -41,6 +41,7 @@ def eq_system(PopIn,t,model):
 
 def run_model(path="popmodel-seirv.yaml",export_to_csv=False,r_dict=False,r_lst=False):
     model = Model(path)
+    print(model.groups[0])
     res = spi.odeint(eq_system, model.PopIn, t_interval,args=(model,))
     if export_to_csv:
         with open("results.csv", "w") as output:
@@ -49,10 +50,12 @@ def run_model(path="popmodel-seirv.yaml",export_to_csv=False,r_dict=False,r_lst=
             writer.writerows(res)
     elif r_dict:
         dictionary = dict(zip([str(g) for g in model.groups], res[-1]))
-        return dict((key, value) for key, value in dictionary.items() if key[-1] is 'r')
+        return dict((key, value*model.total_pop) for key, value in dictionary.items() if key[-1] is 'r')
     elif r_lst:
         dictionary = dict(zip([str(g) for g in model.groups], res[-1]))
-        return np.array(list(dict((key, value) for key, value in dictionary.items() if key[-1] is 'r').values()))#,list(dict((key, value) for key, value in dictionary.items() if key[-1] is 'r').keys())
+        return np.array(list(dict((key, (value*model.total_pop)) for key, value in dictionary.items() if key[-1] is 'r').values()))
+        #return np.array(list(dict((key, (value * model.total_pop)) for key, value in dictionary.items() if key[-1] is 'r').values()))
+
     else:
         return res
 
