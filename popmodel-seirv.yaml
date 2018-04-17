@@ -3,13 +3,6 @@
   - defaults:
     beta: 0.5
     gamma: 0.3
-    initial ratio:
-      s: 0.9
-      i: 0.05
-      r: 0.0
-      e: 0.0
-      v: 0.05
-
 
 - groups:
   - name: p
@@ -48,7 +41,7 @@
           p_adults: 5
           p_matures: 10
 
-  - name: pw
+  - name: pb
     subgroups:
       - name: children
         size: 1800

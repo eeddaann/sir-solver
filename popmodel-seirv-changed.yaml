@@ -1,22 +1,15 @@
 - global:
   - vaccine efficacy: 0.2
   - defaults:
-    beta: 0.9
+    beta: 0.5
     gamma: 0.3
-    initial ratio:
-      s: 0.9
-      i: 0.05
-      r: 0.0
-      e: 0.0
-      v: 0.05
-
 
 - groups:
   - name: p
     subgroups:
       - name: infants
         size: 724031
-        coverage: 0.8
+        coverage: 0.1
         contacts: # assume contacts with ia are negligible
           p_infants: 2 # J contact matrix
           p_children: 3
@@ -24,7 +17,7 @@
           p_matures: 2
       - name: children
         size: 1715637
-        coverage: 0.8
+        coverage: 0.1
         contacts:
           p_infants: 1 # J contact matrix
           p_children: 6
@@ -32,7 +25,7 @@
           p_matures: 2
       - name: adults
         size: 1941868
-        coverage: 0.8
+        coverage: 0.1
         contacts:
           p_infants: 1  # J contact matrix
           p_children: 2
@@ -41,14 +34,14 @@
           p_matures: 5
       - name: matures
         size: 502800
-        coverage: 0.8
+        coverage: 0.1
         contacts:
           p_infants: 1  # J contact matrix
           p_children: 2
           p_adults: 5
           p_matures: 10
 
-  - name: pw
+  - name: pb
     subgroups:
       - name: children
         size: 1800

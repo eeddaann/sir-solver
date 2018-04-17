@@ -5,11 +5,10 @@ STATES = ['s', 'e', 'i', 'r', 'v']
 
 
 class IGroup:
-    def __init__(self, name, subgroups, beta, gamma, initial_ratio):
+    def __init__(self, name, subgroups, beta, gamma):
         self.name = name
         self.beta = beta
         self.gamma = gamma
-        self.initial_ratio = initial_ratio
         self.sub_groups = self.generate_sub_groups(subgroups)
 
     def generate_sub_groups(self, subgroups):
@@ -41,10 +40,6 @@ class SubGroup():
             self.gamma = sub_group['gamma']
         else:
             self.gamma = self.group.gamma
-        if 'initial ratio' in sub_group:
-            self.initial_ratio = sub_group['initial ratio']
-        else:
-            self.initial_ratio = self.group.initial_ratio
         if 'contacts' in sub_group:
             self.contacts_raw = sub_group['contacts']
         else:
@@ -123,18 +118,16 @@ class Model:
     def load_groups(self):
         default_beta = self.dataMap[0]['global'][-1]['beta']
         default_gamma = self.dataMap[0]['global'][-1]['gamma']
-        default_initial_ratio = self.dataMap[0]['global'][-1]['initial ratio']
+
 
         groups = []
         for group in self.dataMap[1]['groups']:
-            beta, gamma, initial_ratio = default_beta, default_gamma, default_initial_ratio
+            beta, gamma = default_beta, default_gamma
             if 'beta' in group:
                 beta = group['beta']
             if 'gamma' in group:
                 gamma = group['gamma']
-            if 'initial ratio' in group:
-                initial_ratio = group['initial ratio']
-            groups.append(IGroup(group['name'], group['subgroups'], beta, gamma, initial_ratio))
+            groups.append(IGroup(group['name'], group['subgroups'], beta, gamma))
 
         sub_groups = []
 
