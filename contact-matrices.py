@@ -38,24 +38,43 @@ def per_week(arr):
 def transform(struct, raw_contacts):
     mask = create_mask()
     d = dict(zip([7,8,9,10,14,16,18,20,21,24,27,30,28,32,36,40], len([7,8,9,10,14,16,18,20,21,24,27,30,28,32,36,40])*[0]))
-    struct = np.array(struct)
-    total_contacts = raw_contacts * struct # multiply by weight
+    #struct = np.array(struct)
+#    print(struct)
+    total_contacts = raw_contacts #* struct # multiply by weight ?
     for (x, y), value in np.ndenumerate(mask):
           #d[value] += value # for demo
           d[value] += total_contacts[(x, y)]
-    arr = np.array(sorted(list(d.values()))).reshape(4,4)
-    # arr = normalize(arr)
-    return per_week(arr)
+    arr = np.array([x[1] for x in sorted(list(d.items()))]).reshape(4,4)
+    #arr = normalize(arr)
+#    print(arr)
+    return arr
 
 #print(create_mask())
 
 
 def main():
-    print("###_P_###")
-    print(transform(P_STRUCT, J_raw_contacts)/P_STRUCT_R)
 
     print("###_I_###")
-    print(transform(I_STRUCT, I_raw_contacts)/I_STRUCT_R)
+    print(transform(I_STRUCT, I_raw_contacts))#/I_STRUCT_R)
+
+    print("###_P_###")
+    print(transform(P_STRUCT, J_raw_contacts))#/P_STRUCT_R)
+
+    print("")
+    print("")
+
+    print("###_I_JJ_###")
+    print(transform(I_STRUCT, I_raw_contacts)*JJ)
+
+    print("###_I_JM_###")
+    print(transform(I_STRUCT, I_raw_contacts)*JM)
+
+    print("###_I_MJ_###")
+    print(transform(I_STRUCT, I_raw_contacts)*MJ)
+
+    print("###_I_MM_###")
+    print(transform(I_STRUCT, I_raw_contacts)*MM)
+
 
 
 main()
