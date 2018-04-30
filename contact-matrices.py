@@ -81,6 +81,9 @@ def main():
     print("###_ia_ib_###")
     print(transform(I_STRUCT, I_raw_contacts)*MM*(44436/sum(I_STRUCT)))
 
+    print("###_p_pb_###")
+    print(transform(P_STRUCT, J_raw_contacts)*(160000/sum(P_STRUCT)))
+
 
 
 
