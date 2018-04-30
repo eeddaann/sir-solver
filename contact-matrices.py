@@ -47,7 +47,7 @@ def transform(struct, raw_contacts):
     arr = np.array([x[1] for x in sorted(list(d.items()))]).reshape(4,4)
     #arr = normalize(arr)
 #    print(arr)
-    return arr
+    return per_week(arr)
 
 #print(create_mask())
 
@@ -74,6 +74,14 @@ def main():
 
     print("###_I_MM_###")
     print(transform(I_STRUCT, I_raw_contacts)*MM)
+
+    print("###_ij_ib_###")
+    print(transform(I_STRUCT, I_raw_contacts) * JJ*(44436/sum(I_STRUCT)))
+
+    print("###_ia_ib_###")
+    print(transform(I_STRUCT, I_raw_contacts)*MM*(44436/sum(I_STRUCT)))
+
+
 
 
 
