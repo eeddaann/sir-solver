@@ -136,3 +136,9 @@ class Model:
                 sub_groups.append(g)
                 self.doses[str(g)] = g.doses
         return sub_groups
+
+    def set_global_beta(self,val):
+        self.beta = [val]*len(self.beta)
+
+    def set_global_gamma(self,val):
+        self.gamma = [val]*len(self.gamma)

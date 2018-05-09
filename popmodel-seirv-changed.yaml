@@ -1,7 +1,7 @@
 - global:
   - vaccine efficacy: 0.2
   - defaults:
-    beta: 0.5
+    beta: 0.2
     gamma: 0.3
 
 - groups:
@@ -11,259 +11,307 @@
         size: 724031
         coverage: 0.1
         contacts: # assume contacts with ia are negligible
-          p_infants: 2 # J contact matrix
-          p_children: 3
-          p_adults: 5
-          p_matures: 2
+          p_infants: 27.3934445 # J contact matrix
+          p_children: 28.99149245
+          p_adults: 44.54711206
+          p_matures: 7.06011076
+          pb_children: 0.94969691
+          pb_adults: 1.45926446
+          pb_matures: 0.23127355
       - name: children
         size: 1715637
         coverage: 0.1
         contacts:
-          p_infants: 1 # J contact matrix
-          p_children: 6
-          p_adults: 3
-          p_matures: 2
+          p_infants: 23.79281165 # J contact matrix
+          p_children: 412.71730011
+          p_adults: 127.93797281
+          p_matures: 16.33422162
+          pb_children: 13.51970217
+          pb_adults: 4.19096386
+          pb_matures: 0.53507282
       - name: adults
         size: 1941868
         coverage: 0.1
         contacts:
-          p_infants: 1  # J contact matrix
-          p_children: 2
-          p_adults: 10
-          ia_adults: 5
-          p_matures: 5
+          p_infants: 33.96950971  # J contact matrix
+          p_children: 148.90562355
+          p_adults: 312.6534391
+          p_matures: 17.21628218
+          pb_children: 4.87781753
+          pb_adults: 10.24183231
+          pb_matures: 0.56396717
       - name: matures
         size: 502800
         coverage: 0.1
         contacts:
-          p_infants: 1  # J contact matrix
-          p_children: 2
-          p_adults: 5
-          p_matures: 10
+          p_infants: 30.07852101 # J contact matrix
+          p_children: 62.22940765
+          p_adults: 72.31457958
+          p_matures: 26.36578854
+          pb_children: 2.03849719
+          pb_adults: 2.36886503
+          pb_matures: 0.86368468
 
   - name: pb
     subgroups:
       - name: children
-        size: 1800
-        coverage: 0.1
+        size: 3852
+        coverage: 0.9
         contacts:  # assume contacts with ib include contacts with ia, assume contacts with p include contacts with pw
-          p_infants: 1 # survey
-          p_children: 6
-          p_adults: 3
-          p_matures: 2
-          ib_infants: 1 # survey
-          ib_children: 6
-          ib_adults: 3
-          ib_matures: 2
+          p_infants: 7.030927835
+          p_children: 18.89561856
+          p_adults: 151.6043814
+          p_matures: 13.18298969
+          pb_adults: 31
+          pb_matures: 2.5
+          ib_infants: 0.969072165
+          ib_children: 2.604381443
+          ib_adults: 20.89561856
+          ib_matures: 1.817010309
       - name: adults
-        size: 52800
-        coverage: 0.1
+        size: 112992
+        coverage: 0.9
         contacts:
-          p_infants: 1 # survey
-          p_children: 2
-          p_adults: 10
-          ia_adults: 5
-          p_matures: 5
-          ib_infants: 1 # survey
-          ib_children: 6
-          ib_adults: 3
-          ib_matures: 2
+          p_infants: 8.249675623 # survey
+          p_children: 18.31540612
+          p_adults: 160.3055569
+          p_matures: 21.11691712
+          pb_adults: 35.68878719
+          pb_matures: 2.867276888
+          ib_infants: 1.137052065 # survey
+          ib_children: 2.524410814
+          ib_adults: 22.0949008
+          ib_matures: 2.91054283
       - name: matures
-        size: 5400
-        coverage: 0.1
+        size: 11556
+        coverage: 0.9
         contacts:
-          p_infants: 1 # survey
-          p_children: 2
-          p_adults: 5
-          p_matures: 10
-          ib_infants: 1 # survey
-          ib_children: 6
-          ib_adults: 3
-          ib_matures: 2
+          p_infants: 6.018321381 # survey
+          p_children: 14.97893321
+          p_adults: 138.4213918
+          p_matures: 13.10656656
+          pb_adults: 30.13043478
+          pb_matures: 2.282608696
+          ib_infants: 0.829504706 # survey
+          ib_children: 2.064545047
+          ib_adults: 19.07860825
+          ib_matures: 1.806476916
 
 
   - name: ij
     subgroups:
       - name: infants
         size: 676500
-        coverage: 0.1
+        coverage: 0.184133783
         contacts:  # assume contacts with ib are negligible
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 3
-          ij_adults: 5
-          ij_matures: 2
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 3
-          ia_adults: 5
-          ia_matures: 2
+          ij_infants: 21.31263701
+          ij_children: 12.41178949
+          ij_adults: 21.16018728
+          ij_matures: 5.06350173
+          ia_infants: 0.95577487
+          ia_children: 0.55661233
+          ia_adults: 0.94893819
+          ia_matures: 0.22707503
+          ib_infants: 0.11082033
+          ib_children: 0.06453817
+          ib_adults: 0.11002763
+          ib_matures: 0.02632893
       - name: children
         size: 1614500
-        coverage: 0.1
+        coverage: 0.127454039
         contacts:
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 10
-          ij_adults: 5
-          ij_matures: 2
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 3
-          ia_adults: 5
-          ia_matures: 2
+          ij_infants: 9.56598514 # Dor + i matrix
+          ij_children: 128.41972904
+          ij_adults: 55.32968374
+          ij_matures: 10.08893842
+          ia_infants: 0.42899094
+          ia_children: 5.75904096
+          ia_adults: 2.48128475
+          ia_matures: 0.45244302
+          ib_infants: 0.0497407
+          ib_children: 0.66775013
+          ib_adults: 0.28770037
+          ib_matures: 0.05245993
       - name: adults
         size: 2616800
-        coverage: 0.1
+        coverage: 0.124750341
         contacts:
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 2
-          ij_adults: 15
-          ij_matures: 2
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 3
-          ia_adults: 5
-          ia_matures: 2
+          ij_infants: 13.54800232
+          ij_children: 55.23565343
+          ij_adults: 211.6755408
+          ij_matures: 9.71954441
+          ia_infants: 0.60756631
+          ia_children: 2.47706792
+          ia_adults: 9.49268558
+          ia_matures: 0.43587737
+          ib_infants: 0.07044619
+          ib_children: 0.28721144
+          ib_adults: 1.10065931
+          ib_matures: 0.05053917
       - name: matures
         size: 1860700
-        coverage: 0.1
+        coverage: 0.363983982
         contacts:
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 3
-          ia_adults: 5
-          ia_matures: 2
+          ij_infants: 37.64878122
+          ij_children: 38.0323534
+          ij_adults: 95.40878787
+          ij_matures: 47.35947948
+          ia_infants: 1.68837666
+          ia_children: 1.70557813
+          ia_adults: 4.27865034
+          ia_matures: 2.12385733
+          ib_infants: 0.19576415
+          ib_children: 0.19775862
+          ib_adults: 0.49610158
+          ib_matures: 0.24625732
 
   - name: ia
     subgroups:
       - name: infants
         size: 201700
-        coverage: 0.1
+        coverage: 0.184133783
         contacts:  # assume contacts with ib and pw are negligible
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 2
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          p_infants: 2 # traffic
-          p_children: 3
-          p_adults: 5
-          p_matures: 2
+          ia_infants: 7.69689666 # Dor + i matrix
+          ia_children: 4.48242331
+          ia_adults: 7.64184059
+          ia_matures: 1.82864511
+          ij_infants: 8.86153365
+          ij_children: 5.16067017
+          ij_adults: 8.79814691
+          ij_matures: 2.10534205
+          ib_infants: 0.04002192
+          ib_children: 0.02330747
+          ib_adults: 0.03973564
+          ib_matures: 0.00950849
       - name: children
         size: 592200
-        coverage: 0.1
+        coverage: 0.127454039
         contacts:
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 2
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          p_infants: 2 # traffic
-          p_children: 3
-          p_adults: 5
-          p_matures: 2
+          ia_infants: 3.45468273
+          ia_children: 46.37780779
+          ia_adults: 19.98189419
+          ia_matures: 3.64354333
+          ij_infants: 3.97741955
+          ij_children: 53.39535172
+          ij_adults: 23.00540537
+          ij_matures: 4.19485712
+          ib_infants: 0.01796348
+          ib_children: 0.24115288
+          ib_adults: 0.1039008
+          ib_matures: 0.0189455
       - name: adults
         size: 725600
-        coverage: 0.1
+        coverage: 0.124750341
         contacts:
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 2
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          p_infants: 2 # traffic
-          p_children: 3
-          p_adults: 5
-          p_matures: 2
+          ia_infants: 4.89275793
+          ia_children: 19.94793586
+          ia_adults: 76.44501058
+          ia_matures: 3.51013949
+          ij_infants: 5.63309356
+          ij_children: 22.96630872
+          ij_adults: 88.01209937
+          ij_matures: 4.04126762
+          ib_infants: 0.0254411
+          ib_children: 0.10372422
+          ib_adults: 0.39749473
+          ib_matures: 0.01825184
       - name: matures
         size: 258300
-        coverage: 0.1
+        coverage: 0.363983982
         contacts:
-          ia_infants: 2 # Dor + i matrix
-          ia_children: 2
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # Dor + i matrix
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          p_infants: 2 # traffic
-          p_children: 3
-          p_adults: 5
-          p_matures: 2
+          ia_infants: 13.59657081
+          ia_children: 13.73509498
+          ia_adults: 34.45615762
+          ia_matures: 17.10351558
+          ij_infants: 15.65390248
+          ij_children: 15.8133871
+          ij_adults: 39.66980638
+          ij_matures: 19.69149198
+          ib_infants: 0.07069873
+          ib_children: 0.07141902
+          ib_adults: 0.17916331
+          ib_matures: 0.08893396
+
   - name: ib
     subgroups:
       - name: infants
-        size: 20170
-        coverage: 0.1
+        size: 5000
+        coverage: 0.184133783
         contacts:
-          ia_infants: 2 # assumptions
-          ia_children: 2
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # assumptions
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          pw_infants: 2 # assumptions
-          pw_children: 3
-          pw_adults: 5
-          pw_matures: 2
+          ij_infants: 21.31263701
+          ij_children: 12.41178949
+          ij_adults: 21.16018728
+          ij_matures: 5.06350173
+          ia_infants: 0.95577487
+          ia_children: 0.55661233
+          ia_adults: 0.94893819
+          ia_matures: 0.22707503
+          ib_infants: 0.11082033
+          ib_children: 0.06453817
+          ib_adults: 0.11002763
+          ib_matures: 0.02632893
+          pb_infants: 2 # assumptions
+          pb_children: 3
+          pb_adults: 5
+          pb_matures: 2
       - name: children
-        size: 59220
-        coverage: 0.1
+        size: 10000
+        coverage: 0.127454039
         contacts:
-          ia_infants: 2 # assumptions
-          ia_children: 2
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # assumptions
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          pw_infants: 2 # assumptions
-          pw_children: 3
-          pw_adults: 5
-          pw_matures: 2
+          ij_infants: 9.56598514 # Dor + i matrix
+          ij_children: 128.41972904
+          ij_adults: 55.32968374
+          ij_matures: 10.08893842
+          ia_infants: 0.42899094
+          ia_children: 5.75904096
+          ia_adults: 2.48128475
+          ia_matures: 0.45244302
+          ib_infants: 0.0497407
+          ib_children: 0.66775013
+          ib_adults: 0.28770037
+          ib_matures: 0.05245993
+          pb_infants: 2 # assumptions
+          pb_children: 3
+          pb_adults: 5
+          pb_matures: 2
       - name: adults
-        size: 725600
-        coverage: 0.1
+        size: 20000
+        coverage: 0.124750341
         contacts:
-          ia_infants: 2 # assumptions
-          ia_children: 2
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # assumptions
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          pw_infants: 2 # assumptions
-          pw_children: 3
-          pw_adults: 5
-          pw_matures: 2
+          ij_infants: 13.54800232
+          ij_children: 55.23565343
+          ij_adults: 211.6755408
+          ij_matures: 9.71954441
+          ia_infants: 0.60756631
+          ia_children: 2.47706792
+          ia_adults: 9.49268558
+          ia_matures: 0.43587737
+          ib_infants: 0.07044619
+          ib_children: 0.28721144
+          ib_adults: 1.10065931
+          ib_matures: 0.05053917
+          pb_infants: 2 # assumptions
+          pb_children: 3
+          pb_adults: 5
+          pb_matures: 2
       - name: matures
-        size: 25830
-        coverage: 0.1
+        size: 10000
+        coverage: 0.363983982
         contacts:
-          ia_infants: 2 # assumptions
-          ia_children: 2
-
-          ia_adults: 5
-          ia_matures: 7
-          ij_infants: 2 # assumptions
-          ij_children: 2
-          ij_adults: 5
-          ij_matures: 7
-          pw_infants: 2 # assumptions
-          pw_children: 3
-          pw_adults: 5
-          pw_matures: 2
+          ij_infants: 37.64878122
+          ij_children: 38.0323534
+          ij_adults: 95.40878787
+          ij_matures: 47.35947948
+          ia_infants: 1.68837666
+          ia_children: 1.70557813
+          ia_adults: 4.27865034
+          ia_matures: 2.12385733
+          ib_infants: 0.19576415
+          ib_children: 0.19775862
+          ib_adults: 0.49610158
+          ib_matures: 0.24625732
+          pb_infants: 2 # assumptions
+          pb_children: 3
+          pb_adults: 5
+          pb_matures: 2
 

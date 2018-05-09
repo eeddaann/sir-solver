@@ -39,9 +39,9 @@ def eq_system(PopIn,t,model):
 
     return Eqs
 
-def run_model(path="popmodel-seirv.yaml",export_to_csv=False,r_dict=False,r_lst=False):
-    model = Model(path)
-    print(model.groups[0])
+def run_model(path=None,model=None,export_to_csv=False,r_dict=False,r_lst=False):
+    if path != None:
+        model = Model(path)
     res = spi.odeint(eq_system, model.PopIn, t_interval,args=(model,))
     if export_to_csv:
         with open("results.csv", "w") as output:
