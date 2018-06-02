@@ -107,9 +107,12 @@ class Model:
         self.groups_num = len(self.groups)
 
     def load_DataMap(self, config_path):
-        f = open(config_path)
-        dataMap = yaml.load(f)
-        f.close()
+        if config_path.endswith('yaml'):
+            f = open(config_path)
+            dataMap = yaml.load(f)
+            f.close()
+        else:
+            dataMap = yaml.load(config_path)
         return dataMap
 
     def load_global_params(self):

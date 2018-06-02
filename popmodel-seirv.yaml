@@ -1,15 +1,16 @@
 - global:
-  - vaccine efficacy: 0.2
+  - vaccine efficacy: {{ vaccine_efficacy or '1' }}
   - defaults:
-    beta: 0.2
-    gamma: 0.3
+    beta: {{ global_beta or '0.00020785' }}
+    gamma: {{ global_gamma or '0.08402345' }}
 
 - groups:
   - name: p
     subgroups:
       - name: infants
         size: 724031
-        coverage: 0.1
+        beta: {{ infants_beta or '0.08061797' }}
+        coverage: {{ p_coverage or '0.1' }}
         contacts: # assume contacts with ia are negligible
           p_infants: 27.3934445 # J contact matrix
           p_children: 28.99149245
@@ -20,7 +21,7 @@
           pb_matures: 0.23127355
       - name: children
         size: 1715637
-        coverage: 0.1
+        coverage: {{ p_coverage or '0.1' }}
         contacts:
           p_infants: 23.79281165 # J contact matrix
           p_children: 412.71730011
@@ -31,7 +32,7 @@
           pb_matures: 0.53507282
       - name: adults
         size: 1941868
-        coverage: 0.1
+        coverage: {{ p_coverage or '0.1' }}
         contacts:
           p_infants: 33.96950971  # J contact matrix
           p_children: 148.90562355
@@ -42,7 +43,7 @@
           pb_matures: 0.56396717
       - name: matures
         size: 502800
-        coverage: 0.1
+        coverage: {{ p_coverage or '0.1' }}
         contacts:
           p_infants: 30.07852101 # J contact matrix
           p_children: 62.22940765
@@ -56,7 +57,7 @@
     subgroups:
       - name: children
         size: 3852
-        coverage: 0.1
+        coverage: {{ pb_coverage or '0.1' }}
         contacts:  # assume contacts with ib include contacts with ia, assume contacts with p include contacts with pw
           p_infants: 7.030927835
           p_children: 18.89561856
@@ -70,7 +71,7 @@
           ib_matures: 1.817010309
       - name: adults
         size: 112992
-        coverage: 0.1
+        coverage: {{ pb_coverage or '0.1' }}
         contacts:
           p_infants: 8.249675623 # survey
           p_children: 18.31540612
@@ -84,7 +85,7 @@
           ib_matures: 2.91054283
       - name: matures
         size: 11556
-        coverage: 0.1
+        coverage: {{ pb_coverage or '0.1' }}
         contacts:
           p_infants: 6.018321381 # survey
           p_children: 14.97893321
@@ -102,6 +103,7 @@
     subgroups:
       - name: infants
         size: 676500
+        beta: {{ infants_beta or '0.08061797' }}
         coverage: 0.184133783
         contacts:  # assume contacts with ib are negligible
           ij_infants: 21.31263701
@@ -169,6 +171,7 @@
     subgroups:
       - name: infants
         size: 201700
+        beta: {{ infants_beta or '0.08061797' }}
         coverage: 0.184133783
         contacts:  # assume contacts with ib and pw are negligible
           ia_infants: 7.69689666 # Dor + i matrix
@@ -236,7 +239,8 @@
     subgroups:
       - name: infants
         size: 5000
-        coverage: 0.184133783
+        beta: {{ infants_beta or '0.08061797' }}
+        coverage: {{ ib_coverage or '0.184133783' }}
         contacts:
           ij_infants: 21.31263701
           ij_children: 12.41178949
@@ -256,7 +260,7 @@
           pb_matures: 2
       - name: children
         size: 10000
-        coverage: 0.127454039
+        coverage: {{ ib_coverage or '0.127454039' }}
         contacts:
           ij_infants: 9.56598514 # Dor + i matrix
           ij_children: 128.41972904
@@ -276,7 +280,7 @@
           pb_matures: 2
       - name: adults
         size: 20000
-        coverage: 0.124750341
+        coverage: {{ ib_coverage or '0.124750341' }}
         contacts:
           ij_infants: 13.54800232
           ij_children: 55.23565343
@@ -296,7 +300,7 @@
           pb_matures: 2
       - name: matures
         size: 10000
-        coverage: 0.363983982
+        coverage: {{ ib_coverage or '0.363983982' }}
         contacts:
           ij_infants: 37.64878122
           ij_children: 38.0323534
@@ -314,4 +318,3 @@
           pb_children: 3
           pb_adults: 5
           pb_matures: 2
-
