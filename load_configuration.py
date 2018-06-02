@@ -76,16 +76,16 @@ class State():
 
     def generate_contacts_vector(self, sub_groups_lst):
         # TODO: this function is ugly!
-        if self.state == 's':  # should be more agnostic..
+        if self.state == 'i':  # should be more agnostic..
             contacts_vector = []
             for subgroup in sub_groups_lst:
-                if (str(subgroup.sub_group) in self.sub_group.contacts_raw) and (subgroup.state is 's'):
+                if (str(subgroup.sub_group) in self.sub_group.contacts_raw) and (subgroup.state is 'i'):
                     contacts_vector.append(self.sub_group.contacts_raw[str(subgroup.sub_group)])
                 else:
                     contacts_vector.append(0)
             self.contacts_vector = contacts_vector
         else:
-            self.contacts_vector = None
+            self.contacts_vector = np.zeros(len(sub_groups_lst))
 
 
 class Model:
