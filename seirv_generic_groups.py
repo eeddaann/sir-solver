@@ -24,6 +24,7 @@ def eq_system(PopIn,t,model):
     Eqs= np.zeros(model.groups_num)
 
     for i in range(model.groups_num):
+        vac_eff = model.global_params["vaccine efficacy"]
         if model.states[i] is 's':
             lamda = sum([PopIn[j]*model.contacts[i][j] for j in range(model.groups_num)]) * max(np.cos(t*6.28/52.0),10**-7)
             Eqs[i] = - model.beta[i]  * lamda * PopIn[i]
