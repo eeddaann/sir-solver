@@ -1,5 +1,5 @@
 - global:
-  - vaccine efficacy: {{ vaccine_efficacy or '1' }}
+  - vaccine efficacy: {{ vaccine_efficacy or '0.7' }}
   - defaults:
     beta: {{ global_beta or '0.00020785' }}
     gamma: {{ global_gamma or '0.08402345' }}
